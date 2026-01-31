@@ -1,0 +1,99 @@
+
+-- INSTALLATION
+
+npm install sequelize sequelize-cli
+npm install pg pg-hstore
+
+
+--INITIALISATION
+
+npx sequelize-cli init
+
+
+--DB CONFIGURATION
+
+config/config.json
+
+
+--MODAL CREATION 
+
+npx sequelize-cli model:generate --name User --attributes name:string,email:string,role:string
+
+
+--RUN MIGRATION 
+
+npx sequelize-cli db:migrate
+
+
+--CREATE SEEDER 
+
+npx sequelize-cli seed:generate --name demo-user
+
+--RUN SEED
+
+npx sequelize-cli db:seed:all
+
+
+--UNDO SEED
+
+npx sequelize-cli db:seed:undo
+
+-- to view all functions of cli
+sequelize   --
+
+------------------------------------------------------------------------------------------------
+
+config json explained
+
+{
+  "development": {
+    // PostgreSQL username (default superuser is usually "postgres")
+    "username": "postgres",
+
+    // Password you set for PostgreSQL during installation
+    "password": "admin",
+
+    // Name of the database used while developing the app
+    "database": "sequelize_db",
+
+    // Database server location (127.0.0.1 = your own computer)
+    "host": "127.0.0.1",
+
+    // Type of database you are using
+    "dialect": "postgres"
+  },
+
+  "test": {
+    // Same PostgreSQL username for testing environment
+    "username": "postgres",
+
+    // Password for test DB user
+    "password": "admin",
+
+    // Separate database for running tests
+    "database": "sequelize_db_test",
+
+    // Local host
+    "host": "127.0.0.1",
+
+    // DB type
+    "dialect": "postgres"
+  },
+
+  "production": {
+    // Username used when deploying the app live
+    "username": "postgres",
+
+    // Password should be stored securely using environment variables later
+    "password": "admin",
+
+    // Live production database name
+    "database": "database_production",
+
+    // Host of production DB server
+    "host": "127.0.0.1",
+
+    // Database type
+    "dialect": "postgres"
+  }
+}
